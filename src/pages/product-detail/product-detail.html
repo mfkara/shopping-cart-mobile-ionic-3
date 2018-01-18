@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>product-detail</ion-title>
+
+  <ion-buttons end>
+      <button ion-button (click)="goToCart()" >
+          <ion-icon name="cart"> {{cartCount}} </ion-icon>
+        </button>
+  </ion-buttons>
+</ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <div> {{selectedProduct.productName}} </div>
+      <div> {{selectedProduct.unitPrice |currency:'USD':true}} </div>
+      <div>
+        <button ion-button (click)="addToCart(selectedProduct)" >
+          <ion-icon name="basket" ></ion-icon>
+        </button>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

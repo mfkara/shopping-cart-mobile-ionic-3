@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+        <button ion-button (click)="goToCart()" >
+            <ion-icon name="cart"> {{cartCount}} </ion-icon>
+          </button>
+    </ion-buttons>
+    <ion-title>Products</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar [(ngModel)]="filterText" (ionInput)="getItems()" ></ion-searchbar>
+  <ion-list>
+    <ion-item>
+
+      <ion-label>Select a Category</ion-label>
+      <ion-select [(ngModel)]="selectedCategory" (ionChange)="getItems()" >
+        <ion-option value="" selected>Select</ion-option>
+        <ion-option value="{{category.categoryName}}" *ngFor="let category of categories">{{category.categoryName}}</ion-option>
+
+      </ion-select>
+    </ion-item>
+    <button ion-item *ngFor="let product of products" (click)="itemTapped($event,product)">
+      {{product.productName}}
+      <div item-right>
+        {{product.unitPrice | currency:'USD':true}}
+      </div>
+    </button>
+  </ion-list>
+</ion-content>
